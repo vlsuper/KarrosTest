@@ -1,9 +1,9 @@
 To run this test suite:
-1. You need to install docker, then run the below command to start
+1. You need to install docker, then run the below command from DockerGrid folder to start
 ---------------------------------
 docker-compose up -d
 --------------------------------
-This command will download docker images for Selenium grid and Chrome browser. If you have it in local, you can skip it and user your local one. 
+This command will download docker images for Selenium grid and Chrome browser. I did prepare a bat script for WINDOWS inside DockerGrid. If you have it in local, you can skip it and user your local one. 
 2. Clone this project to your IDE such as IntelliJ.
 3. Right click on suite.xml file and choose option "Create '<your_project_path>/suite.xml'"
 4. Keep all as default and apply.
