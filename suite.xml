@@ -1,0 +1,16 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name = "Karros Test">
+    <test name="UI Test">
+        <classes>
+            <class name="com.karros.auto.StudentRequestStatusPageTest" />
+        </classes>
+    </test>
+
+    <test name="API Test">
+        <classes>
+            <class name="com.karros.auto.APIEndPoint" />
+        </classes>
+    </test>
+</suite>

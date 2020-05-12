@@ -21,10 +21,12 @@ public abstract class BasePage {
         wait = new WebDriverWait(driver,120,10);
 
         PageFactory.initElements(driver, this);
+        System.out.println("Initial Page Factory");
     }
 
     public void openURL(String url){
         driver.navigate().to(url);
+        System.out.println("Open URL - " + url);
     }
 
     /**

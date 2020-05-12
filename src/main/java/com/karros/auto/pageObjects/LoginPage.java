@@ -15,17 +15,22 @@ public class LoginPage extends BasePage{
 
     public LoginPage enterEmail(String email){
         enterText(txtEmail,email);
+        System.out.println("Enter email - "+ email);
+
         return this;
     }
 
     public LoginPage enterPassword(String password){
         enterText(txtPassword,password);
+        System.out.println("Enter password - "+password);
 
         return this;
     }
 
     public LoginPage clickLogin(){
         clickElement(btnlogin);
+        System.out.println("Click Login");
+
         return this;
     }
 

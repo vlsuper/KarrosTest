@@ -1,0 +1,140 @@
+version: "3.5"
+services:
+  selenium-hub:
+    image: selenium/hub:3.141.59
+    restart: always
+    container_name: selenium-hub
+    ports:
+      - "4444:4444"
+  chrome:
+    image: selenium/node-chrome-debug:3.141.59
+    restart: always
+    depends_on:
+      - selenium-hub
+    ports:
+      - "5900:5900"
+    volumes:
+      - /dev/shm:/dev/shm
+    environment:
+      - HUB_PORT_4444_TCP_ADDR=selenium-hub
+      - HUB_PORT_4444_TCP_PORT=4444
+#  firefox:
+#    image: selenium/node-firefox-debug:3.141.59
+#    restart: always
+#    depends_on:
+#      - selenium-hub
+#    ports:
+#      - "5990:5900"
+#    volumes:
+#      - /dev/shm:/dev/shm
+#    environment:
+#      - HUB_PORT_4444_TCP_ADDR=selenium-hub
+#      - HUB_PORT_4444_TCP_PORT=4444
+
+  # Using Appium Docker Android
+#  real_device:
+#    image: appium/appium
+#    privileged: true
+#    ports:
+#      - "4723:4723"
+#    depends_on:
+#      - selenium-hub
+#    volumes:
+##      - ./:/dev/bus/usb
+#      - ~/.android:/root/.android
+#      - $PWD/example/sample_apk:/root/tmp
+#    environment:
+#      - CONNECT_TO_GRID=true
+#      - SELENIUM_HOST=selenium-hub
+#      - SELENIUM_PORT=4444
+##       Enable it for msite testing
+#      - BROWSER_NAME=chrome
+
+  # Docker-Android for Android application testing
+#  nexus_7.1.1:
+#    image: budtmo/docker-android-x86-7.1.1
+#    depends_on:
+#      - selenium-hub
+#      - real_device
+#    ports:
+#      - 6080:6080
+#      - 5554:5554
+#      - 5555:5555
+#      - 4724:4723
+#    # Change path of apk that you want to test. I use sample_apk that I provide in folder "example"
+#    volumes:
+#      - $PWD/example/sample_apk:/root/tmp/sample_apk
+#      - ./video-nexus_7.1.1:/tmp/video
+#    environment:
+#      - DEVICE=Nexus 5
+#      - CONNECT_TO_GRID=true
+#      - APPIUM=true
+#      - SELENIUM_HOST=selenium-hub
+#      - AUTO_RECORD=true
+
+#  nexus_7.1.1:
+#    image: budtmo/docker-android-x86-7.1.1
+#    depends_on:
+#      - selenium-hub
+#    ports:
+#      - 6080:6080
+#      - 5554:5554
+#      - 5555:5555
+#      - 4723:4723
+#    # Change path of apk that you want to test. I use sample_apk that I provide in folder "example"
+#    volumes:
+#      - $PWD/example/sample_apk:/root/tmp/sample_apk
+#      - ./video-nexus_7.1.1:/tmp/video
+#    environment:
+#      - DEVICE=Nexus 5
+#      - CONNECT_TO_GRID=true
+#      - APPIUM=true
+#      - SELENIUM_HOST=selenium-hub
+#      - AUTO_RECORD=true
+
+
+  # Docker-Android for mobile website testing with chrome browser
+  # Chrome browser exists only for version 7.0 and 7.1.1
+#  samsung_galaxy_web_7.1.1:
+#    image: budtmo/docker-android-x86-8.1
+#    privileged: true
+#    depends_on:
+#      - selenium-hub
+#      - real_device
+#    ports:
+#      - 6081:6080
+#      - 5556:5554
+#      - 5557:5555
+#      - 4725:4723
+#    volumes:
+#      - ./video-samsung_7.1.1:/tmp/video
+#    environment:
+#      - DEVICE=Samsung Galaxy S6
+#      - CONNECT_TO_GRID=true
+#      - APPIUM=true
+#      - SELENIUM_HOST=selenium-hub
+#      - SELENIUM_PORT=4444
+#      - MOBILE_WEB_TEST=true
+#      - AUTO_RECORD=true
+
+    # Docker-Android for mobile website testing with default browser
+    # Default browser exists only for version 5.0.1, 5.1.1 and 6.0
+#  samsung_galaxy_web_5.1.1:
+#    image: budtmo/docker-android-x86-5.1.1
+#    depends_on:
+#      - selenium-hub
+#      - real_device
+#    ports:
+#      - 6082:6080
+#      - 5558:5554
+#      - 5559:5555
+#      - 4726:4723
+#    volumes:
+#      - ./video-samsung_5.1.1:/tmp/video
+#    environment:
+#      - DEVICE=Samsung Galaxy S6
+#      - CONNECT_TO_GRID=true
+#      - APPIUM=true
+#      - SELENIUM_HOST=selenium-hub
+#      - MOBILE_WEB_TEST=true
+#      - AUTO_RECORD=true
